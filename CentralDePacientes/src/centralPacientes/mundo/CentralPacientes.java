@@ -1,7 +1,7 @@
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad Ean (Bogot· - Colombia)
- * Departamento de TecnologÌas de la InformaciÛn y Comunicaciones
+ * Universidad Ean (Bogot√° - Colombia)
+ * Departamento de Tecnolog√≠as de la Informaci√≥n y Comunicaciones
  * Licenciado bajo el esquema Academic Free License version 2.1
  * <p>
  * Proyecto Central de Pacientes.
@@ -31,7 +31,7 @@ public class CentralPacientes {
     private ArrayList<Paciente> pacientes;
 
     /**
-     * Vector de clÌnicas manejadas por la central
+     * Vector de cl√≠nicas manejadas por la central
      */
     private ArrayList<String> listaClinicas;
 
@@ -40,28 +40,28 @@ public class CentralPacientes {
     // -----------------------------------------------------------------
 
     /**
-     * Crea una nueva central sin pacientes y con una lista predefinida de clÌnicas
+     * Crea una nueva central sin pacientes y con una lista predefinida de cl√≠nicas
      */
     public CentralPacientes() {
         pacientes = new ArrayList<>();
 
         listaClinicas = new ArrayList<>();
-        listaClinicas.add("ClÌnica del Country");
-        listaClinicas.add("ClÌnica Palermo");
-        listaClinicas.add("ClÌnica Reina SofÌa");
-        listaClinicas.add("ClÌnica El Bosque");
-        listaClinicas.add("ClÌnica San Ignacio");
+        listaClinicas.add("Cl√≠nica del Country");
+        listaClinicas.add("Cl√≠nica Palermo");
+        listaClinicas.add("Cl√≠nica Reina Sof√≠a");
+        listaClinicas.add("Cl√≠nica El Bosque");
+        listaClinicas.add("Cl√≠nica San Ignacio");
         listaClinicas.add("Otra");
     }
 
     // -----------------------------------------------------------------
-    // MÈtodos
+    // M√©todos
     // -----------------------------------------------------------------
 
     /**
-     * Retorna el n˙mero de pacientes de la clÌnica
+     * Retorna el n√∫mero de pacientes de la cl√≠nica
      *
-     * @return El n˙mero de pacientes de la clÌnica
+     * @return El n√∫mero de pacientes de la cl√≠nica
      */
     public int darNumeroPacientes() {
         return pacientes.size();
@@ -71,34 +71,46 @@ public class CentralPacientes {
      * Adiciona un paciente al principio de la lista
      *
      * @param pac El paciente a ser agregado al comienzo de la lista. <br>
-     *            pac!=null y no existe un paciente con cÛdigo igual a pac.codigo
+     *            pac!=null y no existe un paciente con c√≥digo igual a pac.codigo
      */
     public void agregarPacienteAlComienzo(Paciente pac) {
-        // TODO: Realiar el mÈtodo que agrega al principio
+        // TODO: Realiar el m√©todo que agrega al principio
         //CPRADA
+        /**
+         * Se adiciona la nueva entrada al inicio de la lista, para ello se utiliza la posici√≥n 0
+         */
         pacientes.add(0, pac);
     }
 
     /**
-     * Adiciona un paciente al final de la lista. Si la lista est· vacÌa el paciente queda de primero
+     * Adiciona un paciente al final de la lista. Si la lista est√° vac√≠a el paciente queda de primero
      *
      * @param pac El paciente a ser agregado al final la lista. <br>
-     *            pac!=null y no existe un paciente con cÛdigo igual a pac.codigo
+     *            pac!=null y no existe un paciente con c√≥digo igual a pac.codigo
      */
     public void agregarPacienteAlFinal(Paciente pac) {
         // TODO: Agragar un paciente al final de la lista
         //CPRADA
+        /**
+         * Teniendo en cuenta que siempre que se utiliza app el registro del Arraylist
+         * se adicional despu√©s, no fue necesario adicionar posici√≥n
+         */
         pacientes.add(pac);
     }
 
     /**
-     * Adiciona un paciente a la lista de pacientes antes del paciente con el cÛdigo especificado. <br>
+     * Adiciona un paciente a la lista de pacientes antes del paciente con el c√≥digo especificado. <br>
      */
     public void agregarPacienteAntesDe(int cod, Paciente pac) throws NoExisteException {
-        // TODO: Agrega un paciente antes del paciente con el cÛdigo dado
+        // TODO: Agrega un paciente antes del paciente con el c√≥digo dado
         //CPRADA
+        /**
+         * Para poder posicionar el paciente nuevo antes del c√≥digo del paciente ingresado por par√°metro
+         * se debe tener en cuenta la posici√≥n de este, es por ello que primero se busc√≥ la posici√≥n del
+         * paciente ingresado y ya con ello se pudo adicionar el nuevo paciente
+         */
         int pos = 0;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darCodigo() == cod) {
@@ -109,13 +121,18 @@ public class CentralPacientes {
     }
 
     /**
-     * Adiciona un paciente a la lista de pacientes despuÈs del paciente con el cÛdigo especificado.
+     * Adiciona un paciente a la lista de pacientes despu√©s del paciente con el c√≥digo especificado.
      */
     public void agregarPacienteDespuesDe(int cod, Paciente pac) throws NoExisteException {
-        // TODO: Agrega un paciente despuÈs del paciente con el cÛdigo cod
+        // TODO: Agrega un paciente despu√©s del paciente con el c√≥digo cod
         //CPRADA
+        /**
+         * Al igual que el caso anterior, se debe tener en cuenta primero hallar
+         * la posici√≥n del c√≥digo del paciente ingresado para as√≠ poder adicionar el nuevo paciente
+         * para ello fue necesario a la posici√≥n encontrada, adiciona 1
+         */
         int pos = 0;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darCodigo() == cod) {
@@ -127,14 +144,19 @@ public class CentralPacientes {
     }
 
     /**
-     * Busca el paciente con el cÛdigo dado en la lista de pacientes.
+     * Busca el paciente con el c√≥digo dado en la lista de pacientes.
      */
     public Paciente localizar(int codigo) {
         //CPRADA
+        /**
+         * Para localizar el paciente, primero se debe hallar la posici√≥n de
+         * este y seguido de ello retornar los datos de acuerdo a la posici√≥n en
+         * el ArrayList
+         */
         int pos = 0;
 
         Paciente pac;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darCodigo() == codigo) {
@@ -146,13 +168,17 @@ public class CentralPacientes {
     }
 
     /**
-     * Elimina el paciente con el cÛdigo especificado.
+     * Elimina el paciente con el c√≥digo especificado.
      */
     public void eliminarPaciente(int cod) throws NoExisteException {
-        // TODO: Si no existe el paciente con el cÛdigo dado, genera la excepciÛn
+        // TODO: Si no existe el paciente con el c√≥digo dado, genera la excepci√≥n
         //CPRADA
+        /**
+         * Para eliminar un registro, primero se debe hallar la posici√≥n del paciente
+         * ingresado por par√°metro y seguido de ello si proceder con su eliminaci√≥n
+         */
         int pos = 0;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darCodigo() == cod) {
@@ -171,7 +197,7 @@ public class CentralPacientes {
     }
 
     /**
-     * Retorna la lista de clÌnicas manejadas por la central
+     * Retorna la lista de cl√≠nicas manejadas por la central
      */
     public ArrayList<String> darListaClinicas() {
         return listaClinicas;
@@ -185,7 +211,7 @@ public class CentralPacientes {
     }
 
     // -----------------------------------------------------------------
-    // Puntos de ExtensiÛn
+    // Puntos de Extensi√≥n
     // -----------------------------------------------------------------
 
     /**
@@ -193,9 +219,14 @@ public class CentralPacientes {
      */
     public int cantHombres() {
         //CPRADA
+        /**
+         * Relizar un conteo de la cantidad de hombres que se encuentren
+         * dentro del Arraylist, teniendo en cuenta que el g√©nero de los hombres est√°
+         * dado por el n√∫mero 1
+         */
         int pos = 0;
         int cont = 0;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darSexo() == 1) {
@@ -211,9 +242,14 @@ public class CentralPacientes {
      */
     public int cantMujeres() {
         //CPRADA
+        /**
+         * Relizar un conteo de la cantidad de mujeres que se encuentren
+         * dentro del Arraylist, teniendo en cuenta que el g√©nero de las mujeres est√°
+         * dado por el n√∫mero 2
+         */
         int pos = 0;
         int cont = 0;
-        //Se busca la posiciÛn del cÛdigo a buscar
+        //Se busca la posici√≥n del c√≥digo a buscar
         for (int i = 0; i < pacientes.size(); i++){
 
             if (pacientes.get(i).darSexo() == 2) {
@@ -224,31 +260,48 @@ public class CentralPacientes {
     }
 
     /**
-     * De las 6 opciones de clÌnicas que tiene la central
-     * øCu·l es el nombre de la m·s ocupada, la que tiene m·s pacientes?
+     * De las 6 opciones de cl√≠nicas que tiene la central
+     * ¬øCu√°l es el nombre de la m√°s ocupada, la que tiene m√°s pacientes?
      *
-     * @return nombre de la clÌnica
+     * @return nombre de la cl√≠nica
      */
     public String metodo4() {
         //CPRADA
+        /**
+         * Este m√©todo cuenta con 3 for los cuales fueron necesarios
+         * para poder encontrar la cl√≠nica que cuenta con m√°s ocupaci√≥n
+         */
+
+        //Se declara un ArrayList el cual almacenar√° las cl√≠nicas capturadas en el
+        //ArrayList de los paciente
         ArrayList<String> clinica = new ArrayList<>();
 
 
-        //Se ingresan las clÌnicas en un ArrayList
+        //Se ingresan las cl√≠nicas en un ArrayList, en este paso se encuentra
+        //todas las cl√≠nicas, de los diferentes registros, se pueden
+        //presentar duplicidad (Est√° bien para poder continuar en la l√≠nea 286)
         for (int i = 0; i < pacientes.size(); i++) {
             clinica.add(pacientes.get(i).darClinica());
         }
 
+        //Se generan 2 ArrayList uno que contendr√° el nombre de la cl√≠nica (obj) y
+        //otro que contar√° con la cantidad de veces que la cl√≠nica se encuentra en
+        //los diferentes registros de paciente (cant)
         ArrayList<String> obj = new ArrayList<>();
         ArrayList<Integer> cant = new ArrayList<>();
 
+        //En este for se valida la cantidad de veces que se encuentra una cl√≠nica dentro de un ArrayList
+        //y la el nombre de la cl√≠nica y estos se almacenan en los ArrayList creado en la l√≠nea 290-291
         Set<String> valid = new HashSet<>(clinica); //Distinct
         for (String s: valid){
-                //Se ingresa el valor de la clÌnica y la cantidad
+                //Se ingresa el valor de la cl√≠nica y la cantidad
                 obj.add(s);
                 cant.add((Collections.frequency(clinica, s)));
         }
 
+
+        //Finalmente y con ayuda de un ciclo for, se determina cual de las
+        //cl√≠nicas cuenta con mayor ocupaci√≥n
         int max = 1;
         int n = cant.size();
         String val = null;
@@ -263,3 +316,5 @@ public class CentralPacientes {
 
 
 }
+
+
